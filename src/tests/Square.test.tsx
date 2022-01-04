@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
-import App from './App';
+import Square from '../components/Square';
 
 test('first test case', () => {
-  render(<App/>)
-  const linkElement = screen.getByText(/rafi/i)
+  render(<Square value='5' onClick={6}/>)
+  const linkElement = screen.getByText(/5/i)
   expect(linkElement).toBeInTheDocument()
 })
