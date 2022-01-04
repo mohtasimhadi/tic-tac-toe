@@ -1,6 +1,8 @@
+import Board from "./components/Gameboard";
+
 function App() {
   return (
-    <>Rafi</>
+    <Board/>
   );
 }
 
