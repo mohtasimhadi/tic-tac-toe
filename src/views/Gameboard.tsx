@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import Square from './Square'
+import Square from '../components/Square'
 
 export default class Board extends Component {
     renderSquare(i: number){
