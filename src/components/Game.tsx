@@ -1,37 +1,31 @@
-import {Row, Col, Button} from 'react-bootstrap'
+import * as React from 'react';
+import { useGameState } from './GameState';
+import { Log } from './Log';
+import { Board } from './Board';
+import { Row, Column } from './Layout';
 
 function Game() {
-    return (
-        <Board/>
-    )
-}
+  const {
+    gameState,
+    current,
+    xIsNext,
+    jumpTo,
+    winner,
+    handleClick,
+  } = useGameState();
 
-function Board() {
-    return (
-            <Col>
-                <Row>
-                    <Button/>
-                    <Button/>
-                    <Button/>
-                </Row>
-                <Row>
-                    <Button/>
-                    <Button/>
-                    <Button/>
-                </Row>
-                <Row>
-                    <Button/>
-                    <Button/>
-                    <Button/>
-                </Row>
-            </Col>
-    )    
+  return (
+    <Row gap={20}>
+      <Column gap={20}>
+        <div>{
+          winner
+            ? `Winner ${winner}`
+            : `Next Player ${xIsNext ? 'X' : 'O'}`
+        }</div>
+        <Board board={current} onClick={handleClick} />
+      </Column>
+      <Log history={gameState.history} jumpTo={jumpTo}/>
+    </Row>
+  );
 }
-
-function Log() {
-    return (
-        <div>TODO: Log</div>
-    )    
-}
-
 export default Game;
